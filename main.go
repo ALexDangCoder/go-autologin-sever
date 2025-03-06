@@ -1,14 +1,18 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin" // Thêm package Gin
 	"go-automation-login/routes"
 	"go-automation-login/services"
 	"log"
 )
 
 func main() {
+	// Chuyển Gin sang chế độ release
+	gin.SetMode(gin.ReleaseMode) // 🔥 Tắt debug logs, tối ưu hiệu suất
+
 	// Thiết lập Webhook Telegram khi server khởi động
-	services.SetTelegramWebhook() // ✅ Gọi thiết lập webhook
+	services.SetTelegramWebhook()
 
 	// Khởi động Router
 	r := routes.SetupRouter()
